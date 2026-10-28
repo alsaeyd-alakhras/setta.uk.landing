@@ -19,30 +19,30 @@
   <header class="fixed inset-x-0 top-0 z-50 px-4 py-4 lg:px-[100px] lg:py-6" x-data="siteHeader" @scroll.window.passive="onScroll()">
     <div class="relative mx-auto max-w-[1240px]">
       <div class="flex items-center justify-between rounded-2xl border border-[#e5eaf1] px-[25px] py-[13px] backdrop-blur-[6px]" :class="scrolled ? 'bg-white/95 shadow-[0_12px_28px_-6px_rgba(31,80,154,0.18),0_4px_8px_-4px_rgba(31,80,154,0.1)]' : 'bg-white/90 shadow-[0_10px_15px_-3px_rgba(31,80,154,0.05),0_4px_6px_-4px_rgba(31,80,154,0.05)]'">
-        <a href="#" class="flex items-center gap-[10px]">
-          <span class="relative block h-[40px] w-[33px] shrink-0 overflow-hidden">
+        <a href="#" class="group flex origin-left items-center gap-[10px] transition duration-200 hover:scale-105">
+          <span class="relative block h-[40px] w-[33px] shrink-0 overflow-hidden transition duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <img src="assets/imgs/brand/logo-sprite.png" alt="" class="absolute left-[-81.67%] top-[-91.67%] h-[277.78%] w-[266.68%] max-w-none">
           </span>
           <span class="text-[20px] font-bold leading-7 tracking-[-0.5px] text-primary-500"><span class="text-ink">Setta</span>UK</span>
         </a>
 
         <nav class="hidden items-center gap-7 lg:flex" aria-label="Main">
-          <a href="#" class="text-[14px]" :class="active === 'home' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Home</a>
-          <a href="#features" class="text-[14px]" :class="active === 'features' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Features</a>
-          <a href="#how-it-works" class="text-[14px]" :class="active === 'how-it-works' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">How it Works</a>
-          <a href="#guides" class="text-[14px]" :class="active === 'guides' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Guides</a>
-          <a href="#pricing" class="text-[14px]" :class="active === 'pricing' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Pricing</a>
-          <a href="#faq" class="text-[14px]" :class="active === 'faq' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">FAQ</a>
+          <a href="#" class="relative text-[14px] transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-[6px] after:h-[2px] after:origin-center after:rounded-full after:bg-primary-500 after:transition-transform after:duration-300" :class="active === 'home' ? 'font-bold text-primary-500 after:scale-x-100' : 'font-medium text-[#707070] after:scale-x-0 hover:text-primary-500 hover:after:scale-x-100'">Home</a>
+          <a href="#features" class="relative text-[14px] transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-[6px] after:h-[2px] after:origin-center after:rounded-full after:bg-primary-500 after:transition-transform after:duration-300" :class="active === 'features' ? 'font-bold text-primary-500 after:scale-x-100' : 'font-medium text-[#707070] after:scale-x-0 hover:text-primary-500 hover:after:scale-x-100'">Features</a>
+          <a href="#how-it-works" class="relative text-[14px] transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-[6px] after:h-[2px] after:origin-center after:rounded-full after:bg-primary-500 after:transition-transform after:duration-300" :class="active === 'how-it-works' ? 'font-bold text-primary-500 after:scale-x-100' : 'font-medium text-[#707070] after:scale-x-0 hover:text-primary-500 hover:after:scale-x-100'">How it Works</a>
+          <a href="#guides" class="relative text-[14px] transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-[6px] after:h-[2px] after:origin-center after:rounded-full after:bg-primary-500 after:transition-transform after:duration-300" :class="active === 'guides' ? 'font-bold text-primary-500 after:scale-x-100' : 'font-medium text-[#707070] after:scale-x-0 hover:text-primary-500 hover:after:scale-x-100'">Guides</a>
+          <a href="#pricing" class="relative text-[14px] transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-[6px] after:h-[2px] after:origin-center after:rounded-full after:bg-primary-500 after:transition-transform after:duration-300" :class="active === 'pricing' ? 'font-bold text-primary-500 after:scale-x-100' : 'font-medium text-[#707070] after:scale-x-0 hover:text-primary-500 hover:after:scale-x-100'">Pricing</a>
+          <a href="#faq" class="relative text-[14px] transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-[6px] after:h-[2px] after:origin-center after:rounded-full after:bg-primary-500 after:transition-transform after:duration-300" :class="active === 'faq' ? 'font-bold text-primary-500 after:scale-x-100' : 'font-medium text-[#707070] after:scale-x-0 hover:text-primary-500 hover:after:scale-x-100'">FAQ</a>
         </nav>
 
         <div class="hidden items-center gap-3 lg:flex">
-          <a href="#" class="flex items-center gap-[6px] rounded-3xl px-4 py-2 text-[14px] font-semibold leading-5 text-primary-500">
-            <img src="assets/imgs/icons/nav/sign-in.svg" alt="" class="size-[15px]">
+          <a href="#" class="group flex items-center gap-[6px] rounded-3xl px-4 py-2 text-[14px] font-semibold leading-5 text-primary-500 transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-primary-50">
+            <img src="assets/imgs/icons/nav/sign-in.svg" alt="" class="size-[15px] transition-transform duration-300 group-hover:-translate-y-[2px] group-hover:scale-110">
             Sign In
           </a>
-          <a href="#" class="flex items-center gap-[6px] rounded-lg bg-primary-500 px-5 py-[10px] text-[14px] font-semibold leading-5 text-white shadow-[0_4px_6px_-1px_rgba(31,80,154,0.2),0_2px_4px_-2px_rgba(31,80,154,0.2)]">
+          <a href="#" data-magnetic class="group shine magnetic flex items-center gap-[6px] rounded-lg bg-primary-500 px-5 py-[10px] transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-[#1a4585] text-[14px] font-semibold leading-5 text-white shadow-[0_4px_6px_-1px_rgba(31,80,154,0.2),0_2px_4px_-2px_rgba(31,80,154,0.2)]">
             Get the App
-            <img src="assets/imgs/icons/nav/arrow-right.svg" alt="" class="size-3">
+            <img src="assets/imgs/icons/nav/arrow-right.svg" alt="" class="size-3 transition-transform duration-300 group-hover:translate-x-1">
           </a>
         </div>
 
@@ -63,13 +63,13 @@
           <a href="#faq" class="text-[15px] font-medium text-[#707070]" @click="open = false">FAQ</a>
         </nav>
         <div class="mt-5 flex items-center gap-3 border-t border-[#e5eaf1] pt-5">
-          <a href="#" class="flex items-center gap-[6px] rounded-3xl px-4 py-2 text-[14px] font-semibold leading-5 text-primary-500">
-            <img src="assets/imgs/icons/nav/sign-in.svg" alt="" class="size-[15px]">
+          <a href="#" class="group flex items-center gap-[6px] rounded-3xl px-4 py-2 text-[14px] font-semibold leading-5 text-primary-500 transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-primary-50">
+            <img src="assets/imgs/icons/nav/sign-in.svg" alt="" class="size-[15px] transition-transform duration-300 group-hover:-translate-y-[2px] group-hover:scale-110">
             Sign In
           </a>
-          <a href="#" class="flex items-center gap-[6px] rounded-lg bg-primary-500 px-5 py-[10px] text-[14px] font-semibold leading-5 text-white">
+          <a href="#" data-magnetic class="group shine magnetic flex items-center gap-[6px] rounded-lg bg-primary-500 px-5 py-[10px] transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-[#1a4585] text-[14px] font-semibold leading-5 text-white">
             Get the App
-            <img src="assets/imgs/icons/nav/arrow-right.svg" alt="" class="size-3">
+            <img src="assets/imgs/icons/nav/arrow-right.svg" alt="" class="size-3 transition-transform duration-300 group-hover:translate-x-1">
           </a>
         </div>
       </div>
@@ -101,15 +101,15 @@
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="#" class="flex items-center gap-3 rounded-3xl bg-black px-5 py-[10px]">
-            <img src="assets/imgs/brand/google-play.png" alt="" class="size-6 object-cover">
+          <a href="#" data-magnetic class="group shine magnetic flex items-center gap-3 rounded-3xl bg-black px-5 py-[10px] hover:shadow-[0_14px_28px_-8px_rgba(0,0,0,0.5)] transition duration-300 hover:scale-[1.03] active:scale-[0.97]">
+            <img src="assets/imgs/brand/google-play.png" alt="" class="size-6 object-cover transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <span class="flex flex-col">
               <span class="-mb-px text-[10px] font-semibold uppercase leading-[10px] text-white/80">GET IT ON</span>
               <span class="text-[14px] font-bold leading-[17.5px] text-white">Google Play</span>
             </span>
           </a>
-          <a href="#" class="flex items-center gap-3 rounded-3xl bg-black px-5 py-[10px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
-            <img src="assets/imgs/brand/apple-logo.png" alt="" class="size-6 object-cover">
+          <a href="#" data-magnetic class="group shine magnetic flex items-center gap-3 rounded-3xl bg-black px-5 py-[10px] hover:shadow-[0_14px_28px_-8px_rgba(0,0,0,0.5)] transition duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+            <img src="assets/imgs/brand/apple-logo.png" alt="" class="size-6 object-cover transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <span class="flex flex-col">
               <span class="-mb-px text-[10px] font-semibold uppercase leading-[10px] text-white/80">DOWNLOAD ON THE</span>
               <span class="text-[14px] font-bold leading-[17.5px] text-white">App Store</span>
@@ -121,30 +121,30 @@
       <!-- Phones stage: designed at 1325px wide, scaled down on smaller screens -->
       <div class="relative mt-[25px] h-[130px] w-full overflow-hidden sm:h-[195px] md:h-[252px] lg:h-[339px] xl:h-[434px]">
         <div class="absolute left-1/2 top-0 h-[434px] w-[1325px] origin-top -translate-x-1/2 scale-[0.3] sm:scale-[0.45] md:scale-[0.58] lg:scale-[0.78] xl:scale-100">
-          <img src="assets/imgs/hero/phone-right.png" alt="" class="absolute left-[647.91px] top-[36.49px] w-[566.3px] max-w-none">
-          <img src="assets/imgs/hero/phone-left.png" alt="" class="absolute left-[110.53px] top-[35.38px] w-[566.3px] max-w-none">
-          <img src="assets/imgs/hero/phone-center.png" alt="SettaUK app home screen" class="absolute left-[474.71px] top-[0.71px] w-[372.91px] max-w-none">
+          <img src="assets/imgs/hero/phone-right.png" alt="" class="absolute left-[647.91px] top-[36.49px] w-[566.3px] max-w-none origin-bottom transition duration-500 ease-out hover:scale-[1.05]">
+          <img src="assets/imgs/hero/phone-left.png" alt="" class="absolute left-[110.53px] top-[35.38px] w-[566.3px] max-w-none origin-bottom transition duration-500 ease-out hover:scale-[1.05]">
+          <img src="assets/imgs/hero/phone-center.png" alt="SettaUK app home screen" class="absolute left-[474.71px] top-[0.71px] w-[372.91px] max-w-none origin-bottom transition duration-500 ease-out hover:scale-[1.04]">
 
           <!-- Floating pills -->
-          <div class="absolute left-[208px] top-[62px] z-10 hidden items-center gap-2 rounded-full border border-[#e5eaf1] bg-white/95 px-[15px] py-[9px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
-            <span class="flex size-6 items-center justify-center rounded-full bg-primary-500/10">
+          <div class="group absolute left-[208px] top-[62px] z-10 hidden items-center gap-2 rounded-full border border-[#e5eaf1] bg-white/95 px-[15px] py-[9px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-[6px] transition duration-300 hover:scale-105 lg:flex">
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary-500/10 transition duration-300 group-hover:rotate-12 group-hover:scale-125">
               <img src="assets/imgs/icons/hero/set-priority.svg" alt="" class="h-[10.5px] w-[8.167px]">
             </span>
             <span class="text-[12px] font-bold leading-4 text-[#122033]">Set Priority</span>
           </div>
-          <div class="absolute right-[234px] top-[62px] z-10 hidden items-center gap-2 rounded-full border border-[#e5eaf1] bg-white/95 px-[15px] py-[9px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
-            <span class="flex size-6 items-center justify-center rounded-full bg-primary-500/10">
+          <div class="group absolute right-[234px] top-[62px] z-10 hidden items-center gap-2 rounded-full border border-[#e5eaf1] bg-white/95 px-[15px] py-[9px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-[6px] transition duration-300 hover:scale-105 lg:flex">
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary-500/10 transition duration-300 group-hover:rotate-12 group-hover:scale-125">
               <img src="assets/imgs/icons/hero/track-progress.svg" alt="" class="h-[7px] w-[11.667px]">
             </span>
             <span class="text-[12px] font-bold leading-4 text-[#122033]">Track Progress</span>
           </div>
 
           <!-- Active settlers card -->
-          <div class="absolute bottom-[69px] left-[30px] z-10 hidden w-[208px] flex-col gap-[2px] rounded-[28px] border border-[#e5eaf1] bg-white/95 p-[17px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
+          <div class="group absolute bottom-[69px] left-[30px] z-10 hidden w-[208px] flex-col gap-[2px] rounded-[28px] border border-[#e5eaf1] bg-white/95 p-[17px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] backdrop-blur-[6px] transition duration-300 hover:scale-105 lg:flex">
             <span class="text-[11px] font-semibold leading-[16.5px] text-[#64748b]">Active Settlers</span>
             <span class="text-[24px] font-bold leading-8 text-[#122033]">50,000+</span>
             <div class="flex items-center gap-2 pt-[6px]">
-              <span class="flex size-7 items-center justify-center rounded-full bg-primary-500">
+              <span class="flex size-7 items-center justify-center rounded-full bg-primary-500 transition duration-300 group-hover:rotate-45">
                 <img src="assets/imgs/icons/hero/arrow-up-right.svg" alt="" class="size-[8.75px]">
               </span>
               <div class="flex items-center">
@@ -156,9 +156,9 @@
           </div>
 
           <!-- Guides card -->
-          <div class="absolute bottom-[59.5px] right-[33px] z-10 hidden w-[208px] flex-col gap-[10px] rounded-[28px] border border-[#e5eaf1] bg-white/95 p-[17px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
+          <div class="group absolute bottom-[59.5px] right-[33px] z-10 hidden w-[208px] flex-col gap-[10px] rounded-[28px] border border-[#e5eaf1] bg-white/95 p-[17px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] backdrop-blur-[6px] transition duration-300 hover:scale-105 lg:flex">
             <div class="flex items-center gap-3 border-b border-[#e5eaf1] pb-[9px]">
-              <span class="flex size-8 shrink-0 items-center justify-center rounded-3xl bg-primary-500">
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-3xl bg-primary-500 transition duration-300 group-hover:rotate-6 group-hover:scale-110">
                 <img src="assets/imgs/icons/hero/guides.svg" alt="" class="h-[10.667px] w-[14.667px]">
               </span>
               <span class="flex flex-col">
@@ -188,45 +188,45 @@
         </div>
 
         <div class="flex w-full flex-wrap justify-center gap-8 pt-[37px]">
-          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
-            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
-              <img src="assets/imgs/icons/features/settlement-guides.svg" alt="" class="size-6">
+          <article data-spotlight class="group spotlight w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] transition duration-300 hover:scale-[1.04] hover:border-primary-500/30 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary-500">
+              <img src="assets/imgs/icons/features/settlement-guides.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
             </span>
             <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Settlement Guides</h3>
             <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Step-by-step verified guidance<br class="hidden xl:block"> on NHS, bank, tax and visas.</p>
-            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500 transition-all duration-300 group-hover:w-12"></div>
           </article>
-          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
-            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
-              <img src="assets/imgs/icons/features/local-news.svg" alt="" class="size-6">
+          <article data-spotlight class="group spotlight w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] transition duration-300 hover:scale-[1.04] hover:border-primary-500/30 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary-500">
+              <img src="assets/imgs/icons/features/local-news.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
             </span>
             <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Local News</h3>
             <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Stay updated with essential<br class="hidden xl:block"> community alerts and changes.</p>
-            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500 transition-all duration-300 group-hover:w-12"></div>
           </article>
-          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
-            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
-              <img src="assets/imgs/icons/features/services-directory.svg" alt="" class="size-6">
+          <article data-spotlight class="group spotlight w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] transition duration-300 hover:scale-[1.04] hover:border-primary-500/30 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary-500">
+              <img src="assets/imgs/icons/features/services-directory.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
             </span>
             <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Services Directory</h3>
             <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Find local clinics, libraries,<br class="hidden xl:block"> language classes and councils.</p>
-            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500 transition-all duration-300 group-hover:w-12"></div>
           </article>
-          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
-            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
-              <img src="assets/imgs/icons/features/jobs-nearby.svg" alt="" class="size-6">
+          <article data-spotlight class="group spotlight w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] transition duration-300 hover:scale-[1.04] hover:border-primary-500/30 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary-500">
+              <img src="assets/imgs/icons/features/jobs-nearby.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
             </span>
             <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Jobs Nearby</h3>
             <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Discover verified job roles suited<br class="hidden xl:block"> for your background &amp; skills.</p>
-            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500 transition-all duration-300 group-hover:w-12"></div>
           </article>
-          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
-            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
-              <img src="assets/imgs/icons/features/smart-assistance.svg" alt="" class="size-6">
+          <article data-spotlight class="group spotlight w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] transition duration-300 hover:scale-[1.04] hover:border-primary-500/30 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50 transition duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-primary-500">
+              <img src="assets/imgs/icons/features/smart-assistance.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
             </span>
             <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Smart Assistance</h3>
             <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Instant AI &amp; expert guidance in<br class="hidden xl:block"> multiple native languages.</p>
-            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500 transition-all duration-300 group-hover:w-12"></div>
           </article>
         </div>
       </div>
@@ -248,56 +248,56 @@
 
           <div class="relative mx-auto flex w-full max-w-md flex-col items-stretch gap-10 lg:max-w-none lg:flex-row lg:gap-8">
             <!-- Phase 01 -->
-            <div class="isolate flex min-w-px flex-1 flex-col items-center">
+            <div class="group isolate flex min-w-px flex-1 flex-col items-center">
               <div class="relative z-[2] pb-6">
-                <div class="relative flex size-24 items-center justify-center rounded-full bg-[rgba(219,234,254,0.6)] p-2">
+                <div class="relative flex size-24 items-center justify-center rounded-full transition duration-500 group-hover:scale-110 bg-[rgba(219,234,254,0.6)] p-2">
                   <span class="absolute left-[0.33px] top-[-0.08px] size-24 rounded-full border border-white bg-[#e3eefe] shadow-[0_10px_15px_-3px_rgba(59,130,246,0.1),0_4px_6px_-4px_rgba(59,130,246,0.1)]"></span>
                   <span class="relative flex h-full min-w-px flex-1 items-center justify-center rounded-full bg-gradient-to-b from-[#2a69d6] to-primary-500 shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.05)]">
                     <img src="assets/imgs/icons/how-it-works/phase-01-user.svg" alt="" class="size-8">
                   </span>
                 </div>
-                <span class="absolute right-[-2.33px] top-[-4.08px] flex size-[35px] items-center justify-center rounded-full border border-primary-50 bg-white text-[14px] font-bold text-primary-500">01</span>
+                <span class="absolute right-[-2.33px] top-[-4.08px] flex size-[35px] items-center transition duration-300 group-hover:-translate-y-1 group-hover:scale-110 justify-center rounded-full border border-primary-50 bg-white text-[14px] font-bold text-primary-500">01</span>
               </div>
-              <div class="relative z-[1] flex w-full flex-col items-center rounded-3xl border border-primary-50 bg-white p-[33px] drop-shadow-[0_12px_18px_rgba(31,80,154,0.06)]">
+              <div data-spotlight class="spotlight relative z-[1] flex w-full flex-col items-center rounded-3xl transition duration-300 group-hover:scale-[1.03] border border-primary-50 bg-white p-[33px] drop-shadow-[0_12px_18px_rgba(31,80,154,0.06)]">
                 <h3 class="pb-3 text-center text-[20px] font-bold text-ink">Set Your Preferences</h3>
                 <p class="h-[77.5px] text-center text-[14px] font-normal text-[#424242]">Build your profile with your location and needs<br class="hidden xl:block"> with complete confidence and privacy.</p>
-                <div class="h-[6px] w-12 rounded-full bg-primary-500"></div>
+                <div class="h-[6px] w-12 rounded-full transition-all duration-300 group-hover:w-20 bg-primary-500"></div>
               </div>
             </div>
 
             <!-- Phase 02 -->
-            <div class="isolate flex min-w-px flex-1 flex-col items-center">
+            <div class="group isolate flex min-w-px flex-1 flex-col items-center">
               <div class="relative z-[2] pb-6">
-                <div class="relative flex size-24 items-center justify-center rounded-full bg-[rgba(255,237,213,0.7)] p-2">
+                <div class="relative flex size-24 items-center justify-center rounded-full transition duration-500 group-hover:scale-110 bg-[rgba(255,237,213,0.7)] p-2">
                   <span class="absolute left-0 top-[-0.08px] size-24 rounded-full border border-white bg-[#faefe2] shadow-[0_10px_15px_-3px_rgba(249,115,22,0.15),0_4px_6px_-4px_rgba(249,115,22,0.15)]"></span>
                   <span class="relative flex h-full min-w-px flex-1 items-center justify-center rounded-full bg-gradient-to-b from-[#fb923c] to-secondary-500 shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.05)]">
                     <img src="assets/imgs/icons/how-it-works/phase-02-book.svg" alt="" class="size-8">
                   </span>
                 </div>
-                <span class="absolute right-[-2px] top-[-4.08px] flex size-[35px] items-center justify-center rounded-full border border-secondary-50 bg-white text-[14px] font-bold text-secondary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">02</span>
+                <span class="absolute right-[-2px] top-[-4.08px] flex size-[35px] items-center transition duration-300 group-hover:-translate-y-1 group-hover:scale-110 justify-center rounded-full border border-secondary-50 bg-white text-[14px] font-bold text-secondary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">02</span>
               </div>
-              <div class="relative z-[1] flex w-full flex-col items-center rounded-3xl border border-secondary-100 bg-secondary-50 p-[33px] drop-shadow-[0_12px_18px_rgba(227,142,73,0.08)]">
+              <div data-spotlight class="spotlight relative z-[1] flex w-full flex-col items-center rounded-3xl transition duration-300 group-hover:scale-[1.03] border border-secondary-100 bg-secondary-50 p-[33px] drop-shadow-[0_12px_18px_rgba(227,142,73,0.08)]">
                 <h3 class="pb-3 text-center text-[20px] font-bold text-ink">Explore &amp; Discover</h3>
                 <p class="h-[77.5px] text-center text-[14px] font-normal text-[#424242]">Every guide and advice is curated specifically<br class="hidden xl:block"> for your needs and UK region.</p>
-                <div class="h-[6px] w-12 rounded-full bg-secondary-500"></div>
+                <div class="h-[6px] w-12 rounded-full transition-all duration-300 group-hover:w-20 bg-secondary-500"></div>
               </div>
             </div>
 
             <!-- Phase 03 -->
-            <div class="isolate flex min-w-px flex-1 flex-col items-center">
+            <div class="group isolate flex min-w-px flex-1 flex-col items-center">
               <div class="relative z-[2] pb-6">
-                <div class="relative flex size-24 items-center justify-center rounded-full bg-[rgba(219,234,254,0.6)] p-2">
+                <div class="relative flex size-24 items-center justify-center rounded-full transition duration-500 group-hover:scale-110 bg-[rgba(219,234,254,0.6)] p-2">
                   <span class="absolute left-0 top-0 size-24 rounded-full border border-white bg-[#e3eefe] shadow-[0_10px_15px_-3px_rgba(168,85,247,0.15),0_4px_6px_-4px_rgba(168,85,247,0.15)]"></span>
                   <span class="relative flex h-full min-w-px flex-1 items-center justify-center rounded-full bg-gradient-to-b from-[#2a69d6] to-primary-500 shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.05)]">
                     <img src="assets/imgs/icons/how-it-works/phase-03-users.svg" alt="" class="size-8">
                   </span>
                 </div>
-                <span class="absolute right-[-2.67px] top-[-4.08px] flex size-[35px] items-center justify-center rounded-full border border-primary-50 bg-white text-[14px] font-bold text-primary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">03</span>
+                <span class="absolute right-[-2.67px] top-[-4.08px] flex size-[35px] items-center transition duration-300 group-hover:-translate-y-1 group-hover:scale-110 justify-center rounded-full border border-primary-50 bg-white text-[14px] font-bold text-primary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">03</span>
               </div>
-              <div class="relative z-[1] flex w-full flex-col items-center rounded-3xl border border-primary-50 bg-white p-[33px] drop-shadow-[0_12px_18px_rgba(31,80,154,0.06)]">
+              <div data-spotlight class="spotlight relative z-[1] flex w-full flex-col items-center rounded-3xl transition duration-300 group-hover:scale-[1.03] border border-primary-50 bg-white p-[33px] drop-shadow-[0_12px_18px_rgba(31,80,154,0.06)]">
                 <h3 class="pb-3 text-center text-[20px] font-bold text-ink">Get Support &amp; Take Action</h3>
                 <p class="h-[77.5px] text-center text-[14px] font-normal text-[#424242]">Connect with communities, access real<br class="hidden xl:block"> resources, and move forward with clarity.</p>
-                <div class="h-[6px] w-12 rounded-full bg-primary-500"></div>
+                <div class="h-[6px] w-12 rounded-full transition-all duration-300 group-hover:w-20 bg-primary-500"></div>
               </div>
             </div>
           </div>
@@ -321,32 +321,32 @@
 
           <div class="flex flex-col">
             <div class="grid grid-cols-2 gap-3 py-4 sm:grid-cols-3 sm:gap-4">
-              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-ink">🏡 Housing</a>
-              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">🩺 Healthcare</a>
-              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">🎓 Education</a>
-              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">💼 Work</a>
-              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">🚌 Transport</a>
-              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">⚖️ Legal</a>
+              <a href="#" class="group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-ink"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">🏡</span>Housing</a>
+              <a href="#" class="group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">🩺</span>Healthcare</a>
+              <a href="#" class="group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">🎓</span>Education</a>
+              <a href="#" class="group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">💼</span>Work</a>
+              <a href="#" class="group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">🚌</span>Transport</a>
+              <a href="#" class="group flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">⚖️</span>Legal</a>
             </div>
             <div class="flex items-center justify-center gap-[10px]">
-              <a href="#" class="flex w-[185px] items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">☕ Daily Life</a>
-              <a href="#" class="flex w-[185px] items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">💳 Banking</a>
+              <a href="#" class="group flex w-[185px] items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">☕</span>Daily Life</a>
+              <a href="#" class="group flex w-[185px] items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 transition duration-200 hover:scale-105 hover:bg-white hover:text-primary-500 hover:shadow-[0_10px_22px_-8px_rgba(0,0,0,0.45)] p-4 text-[16px] font-bold text-[#1e293b]"><span class="inline-block transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-125">💳</span>Banking</a>
             </div>
           </div>
 
           <div class="pt-[22px]">
-            <a href="#" class="inline-flex items-center gap-[6px] rounded-lg bg-primary-500 p-4 text-[16px] font-bold text-white">
+            <a href="#" data-magnetic class="group shine magnetic inline-flex items-center gap-[6px] rounded-lg bg-primary-500 p-4 transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-[#1a4585] text-[16px] font-bold text-white">
               Explore All Guides
-              <img src="assets/imgs/icons/guides/arrow-right.svg" alt="" class="size-3">
+              <img src="assets/imgs/icons/guides/arrow-right.svg" alt="" class="size-3 transition-transform duration-300 group-hover:translate-x-1">
             </a>
           </div>
         </div>
       </div>
 
       <!-- Floating info cards (desktop only) -->
-      <div class="absolute left-[49.6%] top-[141.92px] hidden w-[255px] rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
+      <div class="absolute left-[49.6%] top-[141.92px] hidden w-[255px] group rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] transition duration-300 hover:scale-105 hover:border-white/60 hover:bg-white/20 shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
         <div class="flex items-start gap-3">
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#fdeee3]">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#fdeee3] transition duration-300 group-hover:rotate-6 group-hover:scale-110">
             <img src="assets/imgs/icons/guides/most-viewed.svg" alt="" class="size-5">
           </span>
           <div class="min-w-px flex-1">
@@ -357,9 +357,9 @@
         </div>
       </div>
 
-      <div class="absolute right-6 top-[300.92px] hidden w-[250px] rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
+      <div class="absolute right-6 top-[300.92px] hidden w-[250px] group rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] transition duration-300 hover:scale-105 hover:border-white/60 hover:bg-white/20 shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
         <div class="flex items-start gap-3">
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#ebf2fe]">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#ebf2fe] transition duration-300 group-hover:rotate-6 group-hover:scale-110">
             <img src="assets/imgs/icons/guides/categories.svg" alt="" class="size-5">
           </span>
           <div class="flex min-w-px flex-1 flex-col gap-2">
@@ -369,9 +369,9 @@
         </div>
       </div>
 
-      <div class="absolute left-[61.3%] top-[504.92px] hidden w-[255px] rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
+      <div class="absolute left-[61.3%] top-[504.92px] hidden w-[255px] group rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] transition duration-300 hover:scale-105 hover:border-white/60 hover:bg-white/20 shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
         <div class="flex items-start gap-3">
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e5f7ee]">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e5f7ee] transition duration-300 group-hover:rotate-6 group-hover:scale-110">
             <img src="assets/imgs/icons/guides/updated-check.svg" alt="" class="size-5">
           </span>
           <div class="flex min-w-px flex-1 flex-col gap-2">
@@ -394,10 +394,10 @@
           </p>
           <div class="mt-[9.5px] flex items-center rounded-full bg-primary-50 p-[6px]" role="radiogroup" aria-label="Billing period">
             <button type="button" role="radio" :aria-checked="!yearly" @click="yearly = false"
-              class="rounded-full px-5 py-2 font-jakarta text-[12px] font-bold leading-4"
+              class="rounded-full px-5 py-2 transition-colors duration-200 font-jakarta text-[12px] font-bold leading-4"
               :class="!yearly ? 'bg-primary-500 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]' : 'text-[#475569]'">Monthly</button>
             <button type="button" role="radio" :aria-checked="yearly" @click="yearly = true"
-              class="flex items-center gap-[6px] rounded-full px-5 py-2 font-jakarta text-[12px] font-bold leading-4"
+              class="flex items-center gap-[6px] rounded-full px-5 py-2 transition-colors duration-200 font-jakarta text-[12px] font-bold leading-4"
               :class="yearly ? 'bg-primary-500 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]' : 'text-[#475569]'">
               Yearly
               <span class="rounded-full bg-secondary-50 px-2 py-[2px] text-[10px] font-extrabold text-secondary-600">Save 20%</span>
@@ -407,7 +407,7 @@
 
         <div class="mx-auto flex w-full max-w-md flex-col items-stretch gap-10 lg:max-w-none lg:flex-row lg:items-end lg:gap-8">
           <!-- Free -->
-          <div class="flex min-w-px flex-1 flex-col items-center rounded-[32px] border border-[#e5eaf1] bg-white p-[33px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+          <div data-spotlight class="group spotlight flex min-w-px flex-1 flex-col items-center transition duration-300 hover:scale-[1.03] hover:shadow-[0_24px_48px_-16px_rgba(31,80,154,0.3)] rounded-[32px] border border-[#e5eaf1] bg-white p-[33px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
             <div class="flex w-full flex-col gap-6">
               <div class="flex w-full flex-col gap-1">
                 <h3 class="text-[22px] font-semibold leading-7 tracking-[-0.22px] text-navy">Free / Community</h3>
@@ -418,19 +418,19 @@
                 </p>
               </div>
               <ul class="flex w-full flex-col gap-3 text-[13px] font-medium leading-[18px] tracking-[0.13px] text-navy">
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Full Settlement Guides (NHS, Banking,<br class="hidden lg:block"> Tenancy)</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Weather &amp; Daily Prayer Time utilities</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Local Borough News &amp; verified Services</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Standard smart guidance assistant</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Full Settlement Guides (NHS, Banking,<br class="hidden lg:block"> Tenancy)</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Weather &amp; Daily Prayer Time utilities</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Local Borough News &amp; verified Services</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Standard smart guidance assistant</span></li>
               </ul>
             </div>
             <div class="w-full pt-8">
-              <a href="#" class="flex w-full items-center justify-center rounded-xl bg-mist px-6 py-[14px] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-[#434751] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">Get Free App</a>
+              <a href="#" data-magnetic class="shine magnetic flex w-full items-center justify-center shine-blue rounded-xl bg-mist px-6 py-[14px] transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-primary-50 text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-[#434751] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">Get Free App</a>
             </div>
           </div>
 
           <!-- Pro -->
-          <div class="relative flex min-w-px flex-1 flex-col items-center rounded-[32px] border-2 border-primary-500 bg-white p-[33px]">
+          <div data-spotlight class="group spotlight relative flex min-w-px flex-1 flex-col items-center transition duration-300 hover:scale-[1.03] hover:shadow-[0_24px_48px_-16px_rgba(31,80,154,0.3)] rounded-[32px] border-2 border-primary-500 bg-white p-[33px]">
             <div class="flex w-full flex-col gap-1">
               <h3 class="text-[22px] font-semibold leading-7 tracking-[-0.22px] text-navy">Pro</h3>
               <p class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">For expedited administrative milestones</p>
@@ -439,20 +439,20 @@
                 <span class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">/ month</span>
               </p>
               <ul class="flex w-full flex-col gap-3 pt-5 text-[13px] font-medium leading-[18px] tracking-[0.13px] text-navy">
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Everything in Community Free</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Unlimited Smart Document Guidance</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Offline Guide &amp; Checklist Bookmarks</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Priority notification for emergency local<br class="hidden lg:block"> grants</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Everything in Community Free</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Unlimited Smart Document Guidance</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Offline Guide &amp; Checklist Bookmarks</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Priority notification for emergency local<br class="hidden lg:block"> grants</span></li>
               </ul>
             </div>
             <div class="w-full pt-8">
-              <a href="#" class="flex w-full items-center justify-center rounded-xl bg-primary-500 px-6 py-[14px] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-white">Subscribe Now</a>
+              <a href="#" data-magnetic class="shine magnetic flex w-full items-center justify-center rounded-xl bg-primary-500 px-6 py-[14px] transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-[#1a4585] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-white">Subscribe Now</a>
             </div>
-            <span class="absolute left-1/2 top-[-14px] -translate-x-1/2 whitespace-nowrap rounded-full bg-primary-500 px-4 py-1 text-[12px] font-bold uppercase leading-4 tracking-[0.3px] text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">RECOMMENDED</span>
+            <span class="absolute left-1/2 top-[-14px] -translate-x-1/2 whitespace-nowrap transition duration-300 group-hover:scale-110 rounded-full bg-primary-500 px-4 py-1 text-[12px] font-bold uppercase leading-4 tracking-[0.3px] text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">RECOMMENDED</span>
           </div>
 
           <!-- Family -->
-          <div class="flex min-w-px flex-1 flex-col items-center rounded-[32px] border border-[#e5eaf1] bg-white p-[33px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div data-spotlight class="group spotlight flex min-w-px flex-1 flex-col items-center transition duration-300 hover:scale-[1.03] hover:shadow-[0_24px_48px_-16px_rgba(31,80,154,0.3)] rounded-[32px] border border-[#e5eaf1] bg-white p-[33px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
             <div class="flex w-full flex-col gap-1">
               <h3 class="text-[22px] font-semibold leading-7 tracking-[-0.22px] text-navy">Family &amp; Plus</h3>
               <p class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">Multi-profile support for families</p>
@@ -461,14 +461,14 @@
                 <span class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">/ month</span>
               </p>
               <ul class="flex w-full flex-col gap-3 pt-5 text-[13px] font-medium leading-[18px] tracking-[0.13px] text-navy">
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Everything in Pro</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Up to 5 Family Member Profiles</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>School admission &amp; child benefit tracking</span></li>
-                <li class="flex items-center gap-[10px]"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Shared household settlement calendar</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Everything in Pro</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Up to 5 Family Member Profiles</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>School admission &amp; child benefit tracking</span></li>
+                <li class="flex items-center gap-[10px] transition-transform duration-200 hover:translate-x-1"><img src="assets/imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Shared household settlement calendar</span></li>
               </ul>
             </div>
             <div class="w-full pt-8">
-              <a href="#" class="flex w-full items-center justify-center rounded-xl bg-mist px-6 py-[14px] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-[#434751]">Subscribe Now</a>
+              <a href="#" data-magnetic class="shine magnetic flex w-full items-center justify-center shine-blue rounded-xl bg-mist px-6 py-[14px] transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-primary-50 text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-[#434751]">Subscribe Now</a>
             </div>
           </div>
         </div>
@@ -489,37 +489,37 @@
         </div>
 
         <div class="grid w-full grid-cols-1 gap-8 pt-[45px] sm:grid-cols-2 lg:grid-cols-4">
-          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+          <div data-spotlight class="group spotlight flex flex-col items-center rounded-3xl bg-white p-8 transition duration-300 hover:scale-[1.03] drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
             <div class="flex h-20 w-16 flex-col pb-4">
-              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#dbeafe,0_1px_2px_0_rgba(0,0,0,0.05)]">
-                <img src="assets/imgs/icons/trust/privacy.svg" alt="" class="size-6">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 transition duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-primary-500 shadow-[0_0_0_1px_#dbeafe,0_1px_2px_0_rgba(0,0,0,0.05)] group-hover:shadow-[0_0_0_6px_#dbeafe,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="assets/imgs/icons/trust/privacy.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
               </span>
             </div>
             <h3 class="text-[18px] font-bold text-ink">Privacy First</h3>
             <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Your personal data stays strictly yours.</p>
           </div>
-          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+          <div data-spotlight class="group spotlight flex flex-col items-center rounded-3xl bg-white p-8 transition duration-300 hover:scale-[1.03] drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
             <div class="flex h-20 w-16 flex-col pb-4">
-              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#d1fae5,0_1px_2px_0_rgba(0,0,0,0.05)]">
-                <img src="assets/imgs/icons/trust/accessible.svg" alt="" class="size-6">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 transition duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-primary-500 shadow-[0_0_0_1px_#d1fae5,0_1px_2px_0_rgba(0,0,0,0.05)] group-hover:shadow-[0_0_0_6px_#d1fae5,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="assets/imgs/icons/trust/accessible.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
               </span>
             </div>
             <h3 class="text-[18px] font-bold text-ink">Accessible</h3>
             <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Plain-English language guides and translations.</p>
           </div>
-          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+          <div data-spotlight class="group spotlight flex flex-col items-center rounded-3xl bg-white p-8 transition duration-300 hover:scale-[1.03] drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
             <div class="flex h-20 w-16 flex-col pb-4">
-              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#fef3c7,0_1px_2px_0_rgba(0,0,0,0.05)]">
-                <img src="assets/imgs/icons/trust/reliable.svg" alt="" class="size-6">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 transition duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-primary-500 shadow-[0_0_0_1px_#fef3c7,0_1px_2px_0_rgba(0,0,0,0.05)] group-hover:shadow-[0_0_0_6px_#fef3c7,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="assets/imgs/icons/trust/reliable.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
               </span>
             </div>
             <h3 class="text-[18px] font-bold text-ink">Reliable</h3>
             <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Continually checked against gov.uk standards.</p>
           </div>
-          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+          <div data-spotlight class="group spotlight flex flex-col items-center rounded-3xl bg-white p-8 transition duration-300 hover:scale-[1.03] drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
             <div class="flex h-20 w-16 flex-col pb-4">
-              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#f3e8ff,0_1px_2px_0_rgba(0,0,0,0.05)]">
-                <img src="assets/imgs/icons/trust/community.svg" alt="" class="size-6">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 transition duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-primary-500 shadow-[0_0_0_1px_#f3e8ff,0_1px_2px_0_rgba(0,0,0,0.05)] group-hover:shadow-[0_0_0_6px_#f3e8ff,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="assets/imgs/icons/trust/community.svg" alt="" class="size-6 transition duration-300 group-hover:brightness-0 group-hover:invert">
               </span>
             </div>
             <h3 class="text-[18px] font-bold text-ink">Community Driven</h3>
@@ -539,45 +539,45 @@
         </div>
 
         <div class="flex w-full flex-col gap-4">
-          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div class="group relative overflow-hidden rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition duration-200 hover:scale-[1.015] before:absolute before:inset-y-0 before:left-0 before:w-1 before:origin-center before:scale-y-0 before:bg-primary-500 before:transition-transform before:duration-300 hover:before:scale-y-100">
             <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 0" @click="toggle(0)">
-              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Who is SettelyUK designed for?</span>
-              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 0 ? 'rotate-180' : ''">
+              <span class="text-[16px] font-semibold leading-6 text-navy transition-colors duration-200 group-hover:text-primary-500 sm:text-[18px]">Who is SettelyUK designed for?</span>
+              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform group-hover:translate-y-[2px]" :class="active === 0 ? 'rotate-180' : ''">
             </button>
             <div x-show="active === 0" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">SettelyUK is built for refugees, migrants and newcomers settling in the UK who need clear, trustworthy guidance on everyday life.</div>
           </div>
-          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div class="group relative overflow-hidden rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition duration-200 hover:scale-[1.015] before:absolute before:inset-y-0 before:left-0 before:w-1 before:origin-center before:scale-y-0 before:bg-primary-500 before:transition-transform before:duration-300 hover:before:scale-y-100">
             <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 1" @click="toggle(1)">
-              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Which languages are currently supported?</span>
-              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 1 ? 'rotate-180' : ''">
+              <span class="text-[16px] font-semibold leading-6 text-navy transition-colors duration-200 group-hover:text-primary-500 sm:text-[18px]">Which languages are currently supported?</span>
+              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform group-hover:translate-y-[2px]" :class="active === 1 ? 'rotate-180' : ''">
             </button>
             <div x-show="active === 1" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">The app offers guidance in English and Arabic, with more native languages being added over time.</div>
           </div>
-          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div class="group relative overflow-hidden rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition duration-200 hover:scale-[1.015] before:absolute before:inset-y-0 before:left-0 before:w-1 before:origin-center before:scale-y-0 before:bg-primary-500 before:transition-transform before:duration-300 hover:before:scale-y-100">
             <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 2" @click="toggle(2)">
-              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Is SettelyUK an official UK Government application?</span>
-              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 2 ? 'rotate-180' : ''">
+              <span class="text-[16px] font-semibold leading-6 text-navy transition-colors duration-200 group-hover:text-primary-500 sm:text-[18px]">Is SettelyUK an official UK Government application?</span>
+              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform group-hover:translate-y-[2px]" :class="active === 2 ? 'rotate-180' : ''">
             </button>
             <div x-show="active === 2" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">No. SettelyUK is an independent support platform and is not affiliated with or endorsed by the UK Government.</div>
           </div>
-          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div class="group relative overflow-hidden rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition duration-200 hover:scale-[1.015] before:absolute before:inset-y-0 before:left-0 before:w-1 before:origin-center before:scale-y-0 before:bg-primary-500 before:transition-transform before:duration-300 hover:before:scale-y-100">
             <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 3" @click="toggle(3)">
-              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Can I use the app without sharing my real-time location?</span>
-              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 3 ? 'rotate-180' : ''">
+              <span class="text-[16px] font-semibold leading-6 text-navy transition-colors duration-200 group-hover:text-primary-500 sm:text-[18px]">Can I use the app without sharing my real-time location?</span>
+              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform group-hover:translate-y-[2px]" :class="active === 3 ? 'rotate-180' : ''">
             </button>
             <div x-show="active === 3" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">Yes. You can choose your area manually, so you never have to share your real-time location to get local guidance.</div>
           </div>
-          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div class="group relative overflow-hidden rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition duration-200 hover:scale-[1.015] before:absolute before:inset-y-0 before:left-0 before:w-1 before:origin-center before:scale-y-0 before:bg-primary-500 before:transition-transform before:duration-300 hover:before:scale-y-100">
             <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 4" @click="toggle(4)">
-              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">What settlement guides are included in the free version?</span>
-              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 4 ? 'rotate-180' : ''">
+              <span class="text-[16px] font-semibold leading-6 text-navy transition-colors duration-200 group-hover:text-primary-500 sm:text-[18px]">What settlement guides are included in the free version?</span>
+              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform group-hover:translate-y-[2px]" :class="active === 4 ? 'rotate-180' : ''">
             </button>
             <div x-show="active === 4" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">All core settlement guides — including NHS, banking and tenancy — are free for everyone.</div>
           </div>
-          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+          <div class="group relative overflow-hidden rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] transition duration-200 hover:scale-[1.015] before:absolute before:inset-y-0 before:left-0 before:w-1 before:origin-center before:scale-y-0 before:bg-primary-500 before:transition-transform before:duration-300 hover:before:scale-y-100">
             <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 5" @click="toggle(5)">
-              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Is SettelyUK completely free to use?</span>
-              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 5 ? 'rotate-180' : ''">
+              <span class="text-[16px] font-semibold leading-6 text-navy transition-colors duration-200 group-hover:text-primary-500 sm:text-[18px]">Is SettelyUK completely free to use?</span>
+              <img src="assets/imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform group-hover:translate-y-[2px]" :class="active === 5 ? 'rotate-180' : ''">
             </button>
             <div x-show="active === 5" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">The core app is free for individuals. Optional Pro and Family plans unlock extra tools for those who want them.</div>
           </div>
@@ -587,7 +587,7 @@
 
     <!-- ============ FINAL CTA ============ -->
     <section class="flex flex-col items-center justify-center overflow-x-clip bg-mist px-4 py-16 md:px-10 lg:p-[100px]">
-      <div class="relative flex w-full max-w-[1229px] items-center justify-center gap-12 rounded-[40px] bg-primary-500 p-6 sm:p-10 lg:p-20">
+      <div class="group/cta relative flex w-full max-w-[1229px] items-center justify-center gap-12 rounded-[40px] bg-primary-500 p-6 sm:p-10 lg:p-20">
         <div class="pointer-events-none absolute inset-0 flex flex-col justify-end overflow-hidden rounded-[40px] opacity-10">
           <div class="relative h-[274px] w-full overflow-clip">
             <div class="absolute inset-[45.77%_0.89%_0.58%_0]">
@@ -603,9 +603,9 @@
             more certainty.
           </h2>
           <p class="max-w-[512px] pb-2 text-[16px] font-normal leading-7 text-white/80 lg:text-[18px]">Download SettaUK today and take the complexity out of settling in. Free for individuals.</p>
-          <a href="#" class="flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-[16px] font-bold leading-6 text-primary-500 opacity-90 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]">
+          <a href="#" data-magnetic class="group shine shine-blue magnetic flex items-center gap-2 rounded-lg bg-white px-8 py-4 transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:opacity-100 text-[16px] font-bold leading-6 text-primary-500 opacity-90 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]">
             Get Free App
-            <img src="assets/imgs/icons/cta/arrow-right.svg" alt="" class="size-4">
+            <img src="assets/imgs/icons/cta/arrow-right.svg" alt="" class="size-4 transition-transform duration-300 group-hover:translate-x-1">
           </a>
 
           <!-- Phones stage: absolute on very wide screens, stacked & scaled below -->
@@ -613,7 +613,7 @@
             <div class="absolute left-1/2 top-0 h-[624px] w-[832px] origin-top -translate-x-1/2 scale-[0.4] sm:scale-[0.54] md:scale-75 lg:scale-100">
               <!-- right phone: login -->
               <div class="absolute left-[calc(50%+114.36px)] top-[calc(50%-0.28px)] flex h-[542.312px] w-[334.8px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                <div class="relative h-[506.48px] w-[250.659px] rotate-[10deg]">
+                <div class="relative h-[506.48px] w-[250.659px] rotate-[10deg] transition duration-500 ease-out group-hover/cta:translate-x-6 group-hover/cta:rotate-[14deg]">
                   <div class="absolute left-[calc(50%-0.06px)] top-[calc(50%-0.26px)] h-[485.677px] w-[224.297px] -translate-x-1/2 -translate-y-1/2 overflow-clip rounded-[16.64px]">
                     <img src="assets/imgs/cta/screen-login.png" alt="" class="absolute left-1/2 top-1/2 h-[484.385px] w-[223.7px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover">
                   </div>
@@ -622,7 +622,7 @@
               </div>
               <!-- left phone: onboarding -->
               <div class="absolute left-[calc(50%-127.15px)] top-[calc(50%-2.78px)] flex h-[536.436px] w-[318.708px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                <div class="relative h-[506.48px] w-[250.659px] -rotate-[8deg]">
+                <div class="relative h-[506.48px] w-[250.659px] -rotate-[8deg] transition duration-500 ease-out group-hover/cta:-translate-x-6 group-hover/cta:-rotate-[12deg]">
                   <div class="absolute left-[calc(50%-0.06px)] top-[calc(50%-0.26px)] h-[485.677px] w-[224.297px] -translate-x-1/2 -translate-y-1/2 overflow-clip rounded-[16.64px]">
                     <img src="assets/imgs/cta/screen-onboarding.png" alt="" class="absolute left-1/2 top-1/2 h-[484.385px] w-[223.7px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover">
                   </div>
@@ -649,9 +649,9 @@
             <span class="text-[28px] font-bold text-white">SettaUK</span>
           </a>
           <p class="max-w-[384px] pb-8 pr-[60px] text-[16px] font-normal text-white/90 lg:max-w-none lg:whitespace-nowrap">Guidance. Support. Community. A brighter<br class="hidden lg:block"> tomorrow together in the United Kingdom.</p>
-          <a href="#" class="mb-8 flex items-center gap-2 rounded-lg bg-white px-7 py-3 text-[16px] font-bold text-primary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+          <a href="#" data-magnetic class="group shine shine-blue magnetic mb-8 flex items-center gap-2 rounded-lg bg-white px-7 py-3 transition duration-300 hover:scale-[1.03] active:scale-[0.97] hover:bg-primary-50 text-[16px] font-bold text-primary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
             Get the App
-            <img src="assets/imgs/icons/footer/arrow-right.svg" alt="" class="size-3">
+            <img src="assets/imgs/icons/footer/arrow-right.svg" alt="" class="size-3 transition-transform duration-300 group-hover:translate-x-1">
           </a>
         </div>
 
@@ -659,48 +659,48 @@
           <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
             <h4 class="text-[16px] font-bold text-white">PRODUCT</h4>
             <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
-              <li><a href="#features">Features</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#guides">Guides</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#features" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Features</a></li>
+              <li><a href="#how-it-works" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">How It Works</a></li>
+              <li><a href="#guides" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Guides</a></li>
+              <li><a href="#pricing" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Pricing</a></li>
+              <li><a href="#faq" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">FAQ</a></li>
             </ul>
           </div>
           <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
             <h4 class="text-[16px] font-bold text-white">COMPANY</h4>
             <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">About</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Our Mission</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Community</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Contact</a></li>
             </ul>
           </div>
           <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
             <h4 class="text-[16px] font-bold text-white">LEGAL</h4>
             <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Cookies</a></li>
-              <li><a href="#">Accessibility</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Privacy Policy</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Terms of Service</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Cookies</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Accessibility</a></li>
             </ul>
           </div>
           <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
             <h4 class="text-[16px] font-bold text-white">SUPPORT</h4>
             <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Resource Hub</a></li>
-              <li><a href="#">Safety &amp; Privacy</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Help Center</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Resource Hub</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Safety &amp; Privacy</a></li>
+              <li><a href="#" class="relative inline-block transition duration-200 hover:translate-x-1 hover:text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100">Contact Us</a></li>
             </ul>
           </div>
           <div class="flex flex-col gap-2 lg:flex-none">
             <h4 class="text-[16px] font-bold text-white">CONNECT</h4>
             <p class="pt-2 text-[14px] font-normal text-[#f5f5f5]">Join our growing<br>community across<br>social media.</p>
             <div class="flex items-center gap-2 pt-2">
-              <a href="#" aria-label="X" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="assets/imgs/icons/footer/x.svg" alt="" class="size-6"></a>
-              <a href="#" aria-label="LinkedIn" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="assets/imgs/icons/footer/linkedin.svg" alt="" class="size-6"></a>
-              <a href="#" aria-label="Instagram" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="assets/imgs/icons/footer/instagram.svg" alt="" class="size-6"></a>
-              <a href="#" aria-label="Facebook" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="assets/imgs/icons/footer/facebook.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="X" class="flex size-10 items-center justify-center rounded-full bg-white/5 transition duration-300 hover:-rotate-12 hover:scale-125 hover:bg-secondary-500"><img src="assets/imgs/icons/footer/x.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="LinkedIn" class="flex size-10 items-center justify-center rounded-full bg-white/5 transition duration-300 hover:-rotate-12 hover:scale-125 hover:bg-secondary-500"><img src="assets/imgs/icons/footer/linkedin.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="Instagram" class="flex size-10 items-center justify-center rounded-full bg-white/5 transition duration-300 hover:-rotate-12 hover:scale-125 hover:bg-secondary-500"><img src="assets/imgs/icons/footer/instagram.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="Facebook" class="flex size-10 items-center justify-center rounded-full bg-white/5 transition duration-300 hover:-rotate-12 hover:scale-125 hover:bg-secondary-500"><img src="assets/imgs/icons/footer/facebook.svg" alt="" class="size-6"></a>
             </div>
           </div>
         </div>

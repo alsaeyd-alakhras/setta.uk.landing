@@ -91,3 +91,47 @@ document.addEventListener('alpine:init', () => {
 
   ['wheel', 'touchstart', 'keydown'].forEach((type) => window.addEventListener(type, stop, { passive: true }));
 })();
+
+(() => {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const MAGNET = 0.14;
+  const MAX_PULL = 5;
+  const clamp = (v, max) => Math.max(-max, Math.min(max, v));
+  let magnetEl = null;
+
+  const resetMagnet = (el) => {
+    el.style.removeProperty('--tx');
+    el.style.removeProperty('--ty');
+  };
+
+  document.addEventListener('pointermove', (event) => {
+    if (event.pointerType !== 'mouse') return;
+
+    const card = event.target.closest('[data-spotlight]');
+    if (card) {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--x', event.clientX - r.left + 'px');
+      card.style.setProperty('--y', event.clientY - r.top + 'px');
+    }
+
+    const magnet = event.target.closest('[data-magnetic]');
+    if (magnetEl && magnetEl !== magnet) resetMagnet(magnetEl);
+    magnetEl = magnet;
+    if (magnet) {
+      const r = magnet.getBoundingClientRect();
+      const dx = event.clientX - (r.left + r.width / 2);
+      const dy = event.clientY - (r.top + r.height / 2);
+      magnet.style.setProperty('--tx', clamp(dx * MAGNET, MAX_PULL) + 'px');
+      magnet.style.setProperty('--ty', clamp(dy * MAGNET, MAX_PULL) + 'px');
+    }
+
+  });
+
+  document.addEventListener('pointerleave', (event) => {
+    const el = event.target;
+    if (!(el instanceof Element)) return;
+    if (el.matches('[data-magnetic]')) resetMagnet(el);
+  }, true);
+})();

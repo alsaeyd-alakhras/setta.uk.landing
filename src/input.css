@@ -31,3 +31,64 @@
     display: none !important;
   }
 }
+
+@layer components {
+  /* Light sweep across a button on hover */
+  .shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+    transform: translateX(-130%);
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .shine-blue::after {
+    background: linear-gradient(100deg, transparent 30%, rgba(31, 80, 154, 0.09) 50%, transparent 70%);
+  }
+  .shine:hover::after {
+    transform: translateX(130%);
+  }
+
+  /* Button follows the cursor slightly (set from main.js) */
+  .magnetic {
+    translate: var(--tx, 0px) var(--ty, 0px);
+    transition-property: transform, translate, background-color, box-shadow, opacity;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-out;
+  }
+
+  /* Soft glow that tracks the cursor inside a card (set from main.js) */
+  .spotlight {
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(320px circle at var(--x, 50%) var(--y, 50%), rgba(31, 80, 154, 0.12), transparent 65%);
+    transition: opacity 0.3s ease;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
