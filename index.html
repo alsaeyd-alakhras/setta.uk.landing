@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SettaUK – Settle into life in the UK with confidence</title>
+  <meta name="description" content="Local guidance, trusted resources, everyday services, settlement guides and smart support — brought together in one simple app for refugees, migrants and newcomers in the UK.">
+  <link rel="icon" type="image/x-icon" href="imgs/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicon/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/alpine.min.js"></script>
+</head>
+<body class="bg-white">
+
+  <!-- ============ TOP NAV BAR ============ -->
+  <header class="fixed inset-x-0 top-0 z-50 px-4 py-4 lg:px-[100px] lg:py-6" x-data="siteHeader" @scroll.window.passive="onScroll()">
+    <div class="relative mx-auto max-w-[1240px]">
+      <div class="flex items-center justify-between rounded-2xl border border-[#e5eaf1] px-[25px] py-[13px] backdrop-blur-[6px]" :class="scrolled ? 'bg-white/95 shadow-[0_12px_28px_-6px_rgba(31,80,154,0.18),0_4px_8px_-4px_rgba(31,80,154,0.1)]' : 'bg-white/90 shadow-[0_10px_15px_-3px_rgba(31,80,154,0.05),0_4px_6px_-4px_rgba(31,80,154,0.05)]'">
+        <a href="#" class="flex items-center gap-[10px]">
+          <span class="relative block h-[40px] w-[33px] shrink-0 overflow-hidden">
+            <img src="imgs/brand/logo-sprite.png" alt="" class="absolute left-[-81.67%] top-[-91.67%] h-[277.78%] w-[266.68%] max-w-none">
+          </span>
+          <span class="text-[20px] font-bold leading-7 tracking-[-0.5px] text-primary-500"><span class="text-ink">Setta</span>UK</span>
+        </a>
+
+        <nav class="hidden items-center gap-7 lg:flex" aria-label="Main">
+          <a href="#" class="text-[14px]" :class="active === 'home' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Home</a>
+          <a href="#features" class="text-[14px]" :class="active === 'features' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Features</a>
+          <a href="#how-it-works" class="text-[14px]" :class="active === 'how-it-works' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">How it Works</a>
+          <a href="#guides" class="text-[14px]" :class="active === 'guides' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Guides</a>
+          <a href="#pricing" class="text-[14px]" :class="active === 'pricing' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">Pricing</a>
+          <a href="#faq" class="text-[14px]" :class="active === 'faq' ? 'font-bold text-primary-500' : 'font-medium text-[#707070] hover:text-primary-500'">FAQ</a>
+        </nav>
+
+        <div class="hidden items-center gap-3 lg:flex">
+          <a href="#" class="flex items-center gap-[6px] rounded-3xl px-4 py-2 text-[14px] font-semibold leading-5 text-primary-500">
+            <img src="imgs/icons/nav/sign-in.svg" alt="" class="size-[15px]">
+            Sign In
+          </a>
+          <a href="#" class="flex items-center gap-[6px] rounded-lg bg-primary-500 px-5 py-[10px] text-[14px] font-semibold leading-5 text-white shadow-[0_4px_6px_-1px_rgba(31,80,154,0.2),0_2px_4px_-2px_rgba(31,80,154,0.2)]">
+            Get the App
+            <img src="imgs/icons/nav/arrow-right.svg" alt="" class="size-3">
+          </a>
+        </div>
+
+        <button type="button" class="flex size-10 flex-col items-center justify-center gap-[5px] lg:hidden" aria-label="Toggle menu" :aria-expanded="open" @click="open = !open">
+          <span class="block h-[2px] w-6 rounded bg-primary-500 transition-transform" :class="open ? 'translate-y-[7px] rotate-45' : ''"></span>
+          <span class="block h-[2px] w-6 rounded bg-primary-500" :class="open ? 'opacity-0' : ''"></span>
+          <span class="block h-[2px] w-6 rounded bg-primary-500 transition-transform" :class="open ? '-translate-y-[7px] -rotate-45' : ''"></span>
+        </button>
+      </div>
+
+      <div x-show="open" x-cloak @click.outside="open = false" class="absolute inset-x-0 top-full mt-2 rounded-2xl border border-[#e5eaf1] bg-white p-5 shadow-[0_10px_15px_-3px_rgba(31,80,154,0.1)] lg:hidden">
+        <nav class="flex flex-col gap-4" aria-label="Mobile">
+          <a href="#" class="text-[15px] font-bold text-primary-500" @click="open = false">Home</a>
+          <a href="#features" class="text-[15px] font-medium text-[#707070]" @click="open = false">Features</a>
+          <a href="#how-it-works" class="text-[15px] font-medium text-[#707070]" @click="open = false">How it Works</a>
+          <a href="#guides" class="text-[15px] font-medium text-[#707070]" @click="open = false">Guides</a>
+          <a href="#pricing" class="text-[15px] font-medium text-[#707070]" @click="open = false">Pricing</a>
+          <a href="#faq" class="text-[15px] font-medium text-[#707070]" @click="open = false">FAQ</a>
+        </nav>
+        <div class="mt-5 flex items-center gap-3 border-t border-[#e5eaf1] pt-5">
+          <a href="#" class="flex items-center gap-[6px] rounded-3xl px-4 py-2 text-[14px] font-semibold leading-5 text-primary-500">
+            <img src="imgs/icons/nav/sign-in.svg" alt="" class="size-[15px]">
+            Sign In
+          </a>
+          <a href="#" class="flex items-center gap-[6px] rounded-lg bg-primary-500 px-5 py-[10px] text-[14px] font-semibold leading-5 text-white">
+            Get the App
+            <img src="imgs/icons/nav/arrow-right.svg" alt="" class="size-3">
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="relative flex flex-col items-center overflow-hidden pt-[130px] md:pt-[150px]">
+      <img src="imgs/hero/hero-bg.png" alt="" class="pointer-events-none absolute inset-0 size-full max-w-none object-cover">
+
+      <div class="relative flex w-full max-w-[1240px] flex-col items-center px-6">
+        <div class="pb-6">
+          <div class="flex items-center gap-2 rounded-full border border-[rgba(31,80,154,0.2)] bg-white/90 px-[17px] py-[9px] backdrop-blur-[2px]">
+            <img src="imgs/icons/hero/badge-verified.svg" alt="" class="h-[12.25px] w-[12.833px] shrink-0">
+            <span class="text-center text-[12px] font-semibold leading-4 text-primary-500">Built for refugees, migrants &amp; newcomers in the UK</span>
+          </div>
+        </div>
+
+        <h1 class="pb-4 text-center text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-[#122033] sm:text-[48px] lg:text-[60px] lg:leading-[60px]">
+          Settle into life in the UK with
+          <span class="block bg-gradient-to-br from-primary-500 to-[#173f7a] bg-clip-text text-transparent">confidence.</span>
+        </h1>
+
+        <p class="pb-8 text-center text-[16px] font-medium leading-[1.6] text-[#64748b] md:text-[18px] md:leading-[29.25px]">
+          Local guidance, trusted resources, everyday services, settlement guides and<br class="hidden lg:block">
+          smart support — brought together in one simple app.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#" class="flex items-center gap-3 rounded-3xl bg-black px-5 py-[10px]">
+            <img src="imgs/brand/google-play.png" alt="" class="size-6 object-cover">
+            <span class="flex flex-col">
+              <span class="-mb-px text-[10px] font-semibold uppercase leading-[10px] text-white/80">GET IT ON</span>
+              <span class="text-[14px] font-bold leading-[17.5px] text-white">Google Play</span>
+            </span>
+          </a>
+          <a href="#" class="flex items-center gap-3 rounded-3xl bg-black px-5 py-[10px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+            <img src="imgs/brand/apple-logo.png" alt="" class="size-6 object-cover">
+            <span class="flex flex-col">
+              <span class="-mb-px text-[10px] font-semibold uppercase leading-[10px] text-white/80">DOWNLOAD ON THE</span>
+              <span class="text-[14px] font-bold leading-[17.5px] text-white">App Store</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Phones stage: designed at 1325px wide, scaled down on smaller screens -->
+      <div class="relative mt-[25px] h-[130px] w-full overflow-hidden sm:h-[195px] md:h-[252px] lg:h-[339px] xl:h-[434px]">
+        <div class="absolute left-1/2 top-0 h-[434px] w-[1325px] origin-top -translate-x-1/2 scale-[0.3] sm:scale-[0.45] md:scale-[0.58] lg:scale-[0.78] xl:scale-100">
+          <img src="imgs/hero/phone-right.png" alt="" class="absolute left-[647.91px] top-[36.49px] w-[566.3px] max-w-none">
+          <img src="imgs/hero/phone-left.png" alt="" class="absolute left-[110.53px] top-[35.38px] w-[566.3px] max-w-none">
+          <img src="imgs/hero/phone-center.png" alt="SettaUK app home screen" class="absolute left-[474.71px] top-[0.71px] w-[372.91px] max-w-none">
+
+          <!-- Floating pills -->
+          <div class="absolute left-[208px] top-[62px] z-10 hidden items-center gap-2 rounded-full border border-[#e5eaf1] bg-white/95 px-[15px] py-[9px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary-500/10">
+              <img src="imgs/icons/hero/set-priority.svg" alt="" class="h-[10.5px] w-[8.167px]">
+            </span>
+            <span class="text-[12px] font-bold leading-4 text-[#122033]">Set Priority</span>
+          </div>
+          <div class="absolute right-[234px] top-[62px] z-10 hidden items-center gap-2 rounded-full border border-[#e5eaf1] bg-white/95 px-[15px] py-[9px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
+            <span class="flex size-6 items-center justify-center rounded-full bg-primary-500/10">
+              <img src="imgs/icons/hero/track-progress.svg" alt="" class="h-[7px] w-[11.667px]">
+            </span>
+            <span class="text-[12px] font-bold leading-4 text-[#122033]">Track Progress</span>
+          </div>
+
+          <!-- Active settlers card -->
+          <div class="absolute bottom-[69px] left-[30px] z-10 hidden w-[208px] flex-col gap-[2px] rounded-[28px] border border-[#e5eaf1] bg-white/95 p-[17px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
+            <span class="text-[11px] font-semibold leading-[16.5px] text-[#64748b]">Active Settlers</span>
+            <span class="text-[24px] font-bold leading-8 text-[#122033]">50,000+</span>
+            <div class="flex items-center gap-2 pt-[6px]">
+              <span class="flex size-7 items-center justify-center rounded-full bg-primary-500">
+                <img src="imgs/icons/hero/arrow-up-right.svg" alt="" class="size-[8.75px]">
+              </span>
+              <div class="flex items-center">
+                <span class="mr-[-8px] flex size-6 items-center justify-center rounded-full border-2 border-white bg-[#dbeafe] p-[2px] text-[10px] font-bold leading-[15px] text-primary-500">EN</span>
+                <span class="mr-[-8px] flex size-6 items-center justify-center rounded-full border-2 border-white bg-[#fef3c7] p-[2px] text-[10px] font-bold leading-[15px] text-secondary-500">AR</span>
+                <span class="flex size-6 items-center justify-center rounded-full border-2 border-white bg-[#e0e7ff] p-[2px] text-[10px] font-bold leading-[15px] text-primary-500">UK</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guides card -->
+          <div class="absolute bottom-[59.5px] right-[33px] z-10 hidden w-[208px] flex-col gap-[10px] rounded-[28px] border border-[#e5eaf1] bg-white/95 p-[17px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] backdrop-blur-[6px] lg:flex">
+            <div class="flex items-center gap-3 border-b border-[#e5eaf1] pb-[9px]">
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-3xl bg-primary-500">
+                <img src="imgs/icons/hero/guides.svg" alt="" class="h-[10.667px] w-[14.667px]">
+              </span>
+              <span class="flex flex-col">
+                <span class="text-[10px] font-semibold leading-[12.5px] text-[#64748b]">Guides</span>
+                <span class="text-[12px] font-bold leading-4 text-[#122033]">120+ Verified</span>
+              </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="size-2 rounded-full bg-[#22c55e]"></span>
+              <span class="text-[12px] font-medium leading-4 text-[#64748b]">NHS, Banking, Housing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features" class="bg-surface px-4 py-16 md:px-10 lg:p-[100px]">
+      <div class="mx-auto flex w-full max-w-[1240px] flex-col items-center gap-8">
+        <div class="flex w-full max-w-[768px] flex-col items-center gap-[9.5px] pt-[2.5px] text-center">
+          <p class="text-[14px] font-bold text-secondary-500">FEATURES</p>
+          <h2 class="text-[26px] font-bold text-[#0b1c30] sm:text-[32px]">Guidance that meets you where you are.</h2>
+          <p class="pt-[6.5px] text-[16px] font-medium leading-6 tracking-[0.16px] text-[#434751]">
+            From your first days in a new city to everyday life, SettelyUK keeps essential information and<br class="hidden lg:block">
+            practical next steps within reach.
+          </p>
+        </div>
+
+        <div class="flex w-full flex-wrap justify-center gap-8 pt-[37px]">
+          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
+              <img src="imgs/icons/features/settlement-guides.svg" alt="" class="size-6">
+            </span>
+            <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Settlement Guides</h3>
+            <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Step-by-step verified guidance<br class="hidden xl:block"> on NHS, bank, tax and visas.</p>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+          </article>
+          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
+              <img src="imgs/icons/features/local-news.svg" alt="" class="size-6">
+            </span>
+            <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Local News</h3>
+            <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Stay updated with essential<br class="hidden xl:block"> community alerts and changes.</p>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+          </article>
+          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
+              <img src="imgs/icons/features/services-directory.svg" alt="" class="size-6">
+            </span>
+            <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Services Directory</h3>
+            <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Find local clinics, libraries,<br class="hidden xl:block"> language classes and councils.</p>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+          </article>
+          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
+              <img src="imgs/icons/features/jobs-nearby.svg" alt="" class="size-6">
+            </span>
+            <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Jobs Nearby</h3>
+            <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Discover verified job roles suited<br class="hidden xl:block"> for your background &amp; skills.</p>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+          </article>
+          <article class="w-full rounded-2xl border border-[#e2e8f0] bg-white p-[25px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] xl:w-0 xl:min-w-px xl:flex-1">
+            <span class="flex size-12 items-center justify-center rounded-xl bg-primary-50">
+              <img src="imgs/icons/features/smart-assistance.svg" alt="" class="size-6">
+            </span>
+            <h3 class="pt-[16px] text-[16px] font-bold leading-6 text-[#0f172a]">Smart Assistance</h3>
+            <p class="font-nimbus text-[12px] leading-[19.5px] text-[#64748b] xl:whitespace-nowrap">Instant AI &amp; expert guidance in<br class="hidden xl:block"> multiple native languages.</p>
+            <div class="mt-4 h-1 w-5 rounded-full bg-primary-500"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how-it-works" class="bg-mist px-4 py-16 md:px-10 lg:p-[100px]">
+      <div class="mx-auto flex w-full max-w-[1240px] flex-col items-center gap-8">
+        <div class="flex w-full max-w-[768px] flex-col items-center gap-[9.5px] pt-[2.5px] text-center">
+          <p class="text-[14px] font-bold text-secondary-500">SETTLEMENT ROADMAP</p>
+          <h2 class="text-[26px] font-bold text-[#0b1c30] sm:text-[32px]">From uncertainty to a clear next step.</h2>
+          <p class="pt-[6.5px] text-[16px] font-medium leading-6 tracking-[0.16px] text-[#434751]">SettelyUK simplifies your transition into UK society through three purposeful phases.</p>
+        </div>
+
+        <div class="relative w-full pb-4 pt-6">
+          <div class="pointer-events-none absolute inset-x-0 top-12 hidden h-[176px] lg:block">
+            <img src="imgs/how-it-works/wave.svg" alt="" class="absolute inset-0 size-full max-w-none">
+          </div>
+
+          <div class="relative mx-auto flex w-full max-w-md flex-col items-stretch gap-10 lg:max-w-none lg:flex-row lg:gap-8">
+            <!-- Phase 01 -->
+            <div class="isolate flex min-w-px flex-1 flex-col items-center">
+              <div class="relative z-[2] pb-6">
+                <div class="relative flex size-24 items-center justify-center rounded-full bg-[rgba(219,234,254,0.6)] p-2">
+                  <span class="absolute left-[0.33px] top-[-0.08px] size-24 rounded-full border border-white bg-[#e3eefe] shadow-[0_10px_15px_-3px_rgba(59,130,246,0.1),0_4px_6px_-4px_rgba(59,130,246,0.1)]"></span>
+                  <span class="relative flex h-full min-w-px flex-1 items-center justify-center rounded-full bg-gradient-to-b from-[#2a69d6] to-primary-500 shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.05)]">
+                    <img src="imgs/icons/how-it-works/phase-01-user.svg" alt="" class="size-8">
+                  </span>
+                </div>
+                <span class="absolute right-[-2.33px] top-[-4.08px] flex size-[35px] items-center justify-center rounded-full border border-primary-50 bg-white text-[14px] font-bold text-primary-500">01</span>
+              </div>
+              <div class="relative z-[1] flex w-full flex-col items-center rounded-3xl border border-primary-50 bg-white p-[33px] drop-shadow-[0_12px_18px_rgba(31,80,154,0.06)]">
+                <h3 class="pb-3 text-center text-[20px] font-bold text-ink">Set Your Preferences</h3>
+                <p class="h-[77.5px] text-center text-[14px] font-normal text-[#424242]">Build your profile with your location and needs<br class="hidden xl:block"> with complete confidence and privacy.</p>
+                <div class="h-[6px] w-12 rounded-full bg-primary-500"></div>
+              </div>
+            </div>
+
+            <!-- Phase 02 -->
+            <div class="isolate flex min-w-px flex-1 flex-col items-center">
+              <div class="relative z-[2] pb-6">
+                <div class="relative flex size-24 items-center justify-center rounded-full bg-[rgba(255,237,213,0.7)] p-2">
+                  <span class="absolute left-0 top-[-0.08px] size-24 rounded-full border border-white bg-[#faefe2] shadow-[0_10px_15px_-3px_rgba(249,115,22,0.15),0_4px_6px_-4px_rgba(249,115,22,0.15)]"></span>
+                  <span class="relative flex h-full min-w-px flex-1 items-center justify-center rounded-full bg-gradient-to-b from-[#fb923c] to-secondary-500 shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.05)]">
+                    <img src="imgs/icons/how-it-works/phase-02-book.svg" alt="" class="size-8">
+                  </span>
+                </div>
+                <span class="absolute right-[-2px] top-[-4.08px] flex size-[35px] items-center justify-center rounded-full border border-secondary-50 bg-white text-[14px] font-bold text-secondary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">02</span>
+              </div>
+              <div class="relative z-[1] flex w-full flex-col items-center rounded-3xl border border-secondary-100 bg-secondary-50 p-[33px] drop-shadow-[0_12px_18px_rgba(227,142,73,0.08)]">
+                <h3 class="pb-3 text-center text-[20px] font-bold text-ink">Explore &amp; Discover</h3>
+                <p class="h-[77.5px] text-center text-[14px] font-normal text-[#424242]">Every guide and advice is curated specifically<br class="hidden xl:block"> for your needs and UK region.</p>
+                <div class="h-[6px] w-12 rounded-full bg-secondary-500"></div>
+              </div>
+            </div>
+
+            <!-- Phase 03 -->
+            <div class="isolate flex min-w-px flex-1 flex-col items-center">
+              <div class="relative z-[2] pb-6">
+                <div class="relative flex size-24 items-center justify-center rounded-full bg-[rgba(219,234,254,0.6)] p-2">
+                  <span class="absolute left-0 top-0 size-24 rounded-full border border-white bg-[#e3eefe] shadow-[0_10px_15px_-3px_rgba(168,85,247,0.15),0_4px_6px_-4px_rgba(168,85,247,0.15)]"></span>
+                  <span class="relative flex h-full min-w-px flex-1 items-center justify-center rounded-full bg-gradient-to-b from-[#2a69d6] to-primary-500 shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.05)]">
+                    <img src="imgs/icons/how-it-works/phase-03-users.svg" alt="" class="size-8">
+                  </span>
+                </div>
+                <span class="absolute right-[-2.67px] top-[-4.08px] flex size-[35px] items-center justify-center rounded-full border border-primary-50 bg-white text-[14px] font-bold text-primary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">03</span>
+              </div>
+              <div class="relative z-[1] flex w-full flex-col items-center rounded-3xl border border-primary-50 bg-white p-[33px] drop-shadow-[0_12px_18px_rgba(31,80,154,0.06)]">
+                <h3 class="pb-3 text-center text-[20px] font-bold text-ink">Get Support &amp; Take Action</h3>
+                <p class="h-[77.5px] text-center text-[14px] font-normal text-[#424242]">Connect with communities, access real<br class="hidden xl:block"> resources, and move forward with clarity.</p>
+                <div class="h-[6px] w-12 rounded-full bg-primary-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SETTLEMENT GUIDES ============ -->
+    <section id="guides" class="relative flex flex-col justify-center overflow-hidden px-4 py-16 md:px-12 lg:py-[100px]">
+      <img src="imgs/guides/guides-bg.png" alt="" class="pointer-events-none absolute inset-0 size-full max-w-none object-cover">
+      <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(-90deg,rgba(255,255,255,0)_0%,rgba(0,0,0,0.5)_53.611%)]"></div>
+      <div class="pointer-events-none absolute inset-0 bg-[#00317c]/30"></div>
+
+      <div class="relative w-full rounded-2xl border border-[#9e9e9e] bg-white/10 px-5 py-10 sm:px-8 md:py-16 lg:max-w-[586px]">
+        <div class="flex flex-col gap-6 pt-[2px]">
+          <div class="flex flex-col gap-[10px]">
+            <p class="text-[14px] font-bold text-secondary-500">REAL STORIES, REAL GUIDANCE</p>
+            <h2 class="text-[26px] font-bold text-white sm:whitespace-nowrap sm:text-[32px]">Practical guides for everyday life.</h2>
+            <p class="pt-[6px] text-[16px] font-medium leading-6 tracking-[0.16px] text-[#d2d2d2]">Explore clear, step-by-step guides written for newcomers in the UK, covering the topics that matter most.</p>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="grid grid-cols-2 gap-3 py-4 sm:grid-cols-3 sm:gap-4">
+              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-ink">🏡 Housing</a>
+              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">🩺 Healthcare</a>
+              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">🎓 Education</a>
+              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">💼 Work</a>
+              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">🚌 Transport</a>
+              <a href="#" class="flex items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">⚖️ Legal</a>
+            </div>
+            <div class="flex items-center justify-center gap-[10px]">
+              <a href="#" class="flex w-[185px] items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">☕ Daily Life</a>
+              <a href="#" class="flex w-[185px] items-center justify-center whitespace-nowrap rounded-full border border-[#f5f5f5] bg-white/70 p-4 text-[16px] font-bold text-[#1e293b]">💳 Banking</a>
+            </div>
+          </div>
+
+          <div class="pt-[22px]">
+            <a href="#" class="inline-flex items-center gap-[6px] rounded-lg bg-primary-500 p-4 text-[16px] font-bold text-white">
+              Explore All Guides
+              <img src="imgs/icons/guides/arrow-right.svg" alt="" class="size-3">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating info cards (desktop only) -->
+      <div class="absolute left-[49.6%] top-[141.92px] hidden w-[255px] rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
+        <div class="flex items-start gap-3">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#fdeee3]">
+            <img src="imgs/icons/guides/most-viewed.svg" alt="" class="size-5">
+          </span>
+          <div class="min-w-px flex-1">
+            <p class="text-[12px] font-bold text-white">Most viewed guide</p>
+            <p class="text-[12px] font-medium text-[#e1e1e1]">Housing in the UK</p>
+            <p class="pt-2 text-[10px] font-medium text-[#bebebe]">Trusted by thousands of<br>newcomers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute right-6 top-[300.92px] hidden w-[250px] rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
+        <div class="flex items-start gap-3">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#ebf2fe]">
+            <img src="imgs/icons/guides/categories.svg" alt="" class="size-5">
+          </span>
+          <div class="flex min-w-px flex-1 flex-col gap-2">
+            <p class="font-jakarta text-[12.5px] font-bold leading-[18.75px] text-white">8 guide categories</p>
+            <p class="text-[10px] font-medium text-[#bebebe]">Everything you need in one<br>place</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute left-[61.3%] top-[504.92px] hidden w-[255px] rounded-2xl border border-[#9e9e9e] bg-white/10 p-[21px] shadow-[0_16px_32px_-8px_rgba(15,23,42,0.22)] backdrop-blur-[10px] xl:block">
+        <div class="flex items-start gap-3">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#e5f7ee]">
+            <img src="imgs/icons/guides/updated-check.svg" alt="" class="size-5">
+          </span>
+          <div class="flex min-w-px flex-1 flex-col gap-2">
+            <p class="font-jakarta text-[12.5px] font-bold leading-[18.75px] text-white">Updated for<br>newcomers</p>
+            <p class="text-[10px] font-medium text-[#bebebe]">Clear. Current. Reliable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section id="pricing" class="bg-surface px-4 py-16 md:px-10 lg:p-[100px]" x-data="pricing">
+      <div class="mx-auto flex w-full max-w-[1240px] flex-col items-center gap-16">
+        <div class="flex w-full max-w-[768px] flex-col items-center gap-[9.5px] pt-[2.5px] text-center">
+          <p class="text-[14px] font-bold text-secondary-500">CLEAR &amp; ACCESSIBLE</p>
+          <h2 class="text-[26px] font-bold text-ink sm:text-[32px]">Choose the support that fits your journey.</h2>
+          <p class="pt-[6.5px] text-[16px] font-medium leading-6 tracking-[0.16px] text-[#434751]">
+            Honest, accessible support. Core settlement essentials will always remain free — no fake<br class="hidden lg:block">
+            countdowns or paywalls on vital rights.
+          </p>
+          <div class="mt-[9.5px] flex items-center rounded-full bg-primary-50 p-[6px]" role="radiogroup" aria-label="Billing period">
+            <button type="button" role="radio" :aria-checked="!yearly" @click="yearly = false"
+              class="rounded-full px-5 py-2 font-jakarta text-[12px] font-bold leading-4"
+              :class="!yearly ? 'bg-primary-500 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]' : 'text-[#475569]'">Monthly</button>
+            <button type="button" role="radio" :aria-checked="yearly" @click="yearly = true"
+              class="flex items-center gap-[6px] rounded-full px-5 py-2 font-jakarta text-[12px] font-bold leading-4"
+              :class="yearly ? 'bg-primary-500 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]' : 'text-[#475569]'">
+              Yearly
+              <span class="rounded-full bg-secondary-50 px-2 py-[2px] text-[10px] font-extrabold text-secondary-600">Save 20%</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mx-auto flex w-full max-w-md flex-col items-stretch gap-10 lg:max-w-none lg:flex-row lg:items-end lg:gap-8">
+          <!-- Free -->
+          <div class="flex min-w-px flex-1 flex-col items-center rounded-[32px] border border-[#e5eaf1] bg-white p-[33px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+            <div class="flex w-full flex-col gap-6">
+              <div class="flex w-full flex-col gap-1">
+                <h3 class="text-[22px] font-semibold leading-7 tracking-[-0.22px] text-navy">Free / Community</h3>
+                <p class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">Always free for all newcomers to the UK</p>
+                <p class="flex h-[60px] items-baseline gap-2 pt-[19.5px]">
+                  <span class="text-[36px] font-bold leading-10 tracking-[0.14px] text-navy">£0</span>
+                  <span class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">/ forever</span>
+                </p>
+              </div>
+              <ul class="flex w-full flex-col gap-3 text-[13px] font-medium leading-[18px] tracking-[0.13px] text-navy">
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Full Settlement Guides (NHS, Banking,<br class="hidden lg:block"> Tenancy)</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Weather &amp; Daily Prayer Time utilities</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Local Borough News &amp; verified Services</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Standard smart guidance assistant</span></li>
+              </ul>
+            </div>
+            <div class="w-full pt-8">
+              <a href="#" class="flex w-full items-center justify-center rounded-xl bg-mist px-6 py-[14px] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-[#434751] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">Get Free App</a>
+            </div>
+          </div>
+
+          <!-- Pro -->
+          <div class="relative flex min-w-px flex-1 flex-col items-center rounded-[32px] border-2 border-primary-500 bg-white p-[33px]">
+            <div class="flex w-full flex-col gap-1">
+              <h3 class="text-[22px] font-semibold leading-7 tracking-[-0.22px] text-navy">Pro</h3>
+              <p class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">For expedited administrative milestones</p>
+              <p class="flex h-[60px] items-baseline gap-2 pt-[19.5px]">
+                <span class="text-[36px] font-bold leading-10 tracking-[0.14px] text-navy" x-text="price('pro')">£3.99</span>
+                <span class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">/ month</span>
+              </p>
+              <ul class="flex w-full flex-col gap-3 pt-5 text-[13px] font-medium leading-[18px] tracking-[0.13px] text-navy">
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Everything in Community Free</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Unlimited Smart Document Guidance</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Offline Guide &amp; Checklist Bookmarks</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Priority notification for emergency local<br class="hidden lg:block"> grants</span></li>
+              </ul>
+            </div>
+            <div class="w-full pt-8">
+              <a href="#" class="flex w-full items-center justify-center rounded-xl bg-primary-500 px-6 py-[14px] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-white">Subscribe Now</a>
+            </div>
+            <span class="absolute left-1/2 top-[-14px] -translate-x-1/2 whitespace-nowrap rounded-full bg-primary-500 px-4 py-1 text-[12px] font-bold uppercase leading-4 tracking-[0.3px] text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">RECOMMENDED</span>
+          </div>
+
+          <!-- Family -->
+          <div class="flex min-w-px flex-1 flex-col items-center rounded-[32px] border border-[#e5eaf1] bg-white p-[33px] drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <div class="flex w-full flex-col gap-1">
+              <h3 class="text-[22px] font-semibold leading-7 tracking-[-0.22px] text-navy">Family &amp; Plus</h3>
+              <p class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">Multi-profile support for families</p>
+              <p class="flex h-[60px] items-baseline gap-2 pt-[19.5px]">
+                <span class="text-[36px] font-bold leading-10 tracking-[0.14px] text-navy" x-text="price('family')">£6.99</span>
+                <span class="text-[13px] font-medium leading-[18px] tracking-[0.13px] text-[#434751]">/ month</span>
+              </p>
+              <ul class="flex w-full flex-col gap-3 pt-5 text-[13px] font-medium leading-[18px] tracking-[0.13px] text-navy">
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Everything in Pro</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Up to 5 Family Member Profiles</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>School admission &amp; child benefit tracking</span></li>
+                <li class="flex items-center gap-[10px]"><img src="imgs/icons/pricing/check.svg" alt="" class="h-[9.019px] w-[12.225px] shrink-0"><span>Shared household settlement calendar</span></li>
+              </ul>
+            </div>
+            <div class="w-full pt-8">
+              <a href="#" class="flex w-full items-center justify-center rounded-xl bg-mist px-6 py-[14px] text-[14px] font-semibold leading-[18px] tracking-[0.28px] text-[#434751]">Subscribe Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST, PRIVACY & ACCESSIBILITY ============ -->
+    <section class="relative overflow-hidden px-4 py-16 md:px-10 lg:p-[100px]">
+      <img src="imgs/trust/trust-bg.png" alt="" class="pointer-events-none absolute inset-0 size-full max-w-none object-cover">
+      <div class="relative mx-auto flex w-full max-w-[1240px] flex-col items-center gap-8">
+        <div class="flex w-full max-w-[768px] flex-col items-center gap-[9.5px] pt-[2.5px] text-center">
+          <p class="text-[14px] font-bold text-secondary-500">INSTITUTIONAL INTEGRITY</p>
+          <h2 class="text-[26px] font-bold text-ink sm:text-[32px]">Designed to feel clear, safe and respectful.</h2>
+          <p class="pt-[6.5px] text-[16px] font-medium leading-6 tracking-[0.16px] text-[#434751]">
+            Navigating official processes is difficult enough. We hold ourselves to rigorous civil society<br class="hidden lg:block">
+            standards.
+          </p>
+        </div>
+
+        <div class="grid w-full grid-cols-1 gap-8 pt-[45px] sm:grid-cols-2 lg:grid-cols-4">
+          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+            <div class="flex h-20 w-16 flex-col pb-4">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#dbeafe,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="imgs/icons/trust/privacy.svg" alt="" class="size-6">
+              </span>
+            </div>
+            <h3 class="text-[18px] font-bold text-ink">Privacy First</h3>
+            <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Your personal data stays strictly yours.</p>
+          </div>
+          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+            <div class="flex h-20 w-16 flex-col pb-4">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#d1fae5,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="imgs/icons/trust/accessible.svg" alt="" class="size-6">
+              </span>
+            </div>
+            <h3 class="text-[18px] font-bold text-ink">Accessible</h3>
+            <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Plain-English language guides and translations.</p>
+          </div>
+          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+            <div class="flex h-20 w-16 flex-col pb-4">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#fef3c7,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="imgs/icons/trust/reliable.svg" alt="" class="size-6">
+              </span>
+            </div>
+            <h3 class="text-[18px] font-bold text-ink">Reliable</h3>
+            <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Continually checked against gov.uk standards.</p>
+          </div>
+          <div class="flex flex-col items-center rounded-3xl bg-white p-8 drop-shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
+            <div class="flex h-20 w-16 flex-col pb-4">
+              <span class="flex size-16 items-center justify-center rounded-full bg-primary-50 shadow-[0_0_0_1px_#f3e8ff,0_1px_2px_0_rgba(0,0,0,0.05)]">
+                <img src="imgs/icons/trust/community.svg" alt="" class="size-6">
+              </span>
+            </div>
+            <h3 class="text-[18px] font-bold text-ink">Community Driven</h3>
+            <p class="max-w-[200px] pt-1 text-center text-[14px] font-medium text-[#424242]">Built for a brighter, shared UK journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="bg-mist px-4 py-16 md:px-10 lg:px-[192px] lg:py-24" x-data="faq">
+      <div class="mx-auto flex w-full max-w-[896px] flex-col gap-16 lg:px-12">
+        <div class="flex w-full flex-col items-center gap-[9.5px] pt-[2.5px] text-center">
+          <p class="text-[14px] font-bold text-secondary-500">GOT QUESTIONS?</p>
+          <h2 class="text-[26px] font-bold text-ink sm:text-[32px]">Frequently Asked Questions</h2>
+          <p class="pt-[6.5px] text-[16px] font-medium leading-6 tracking-[0.16px] text-[#434751]">Everything you need to know about SettelyUK and how we handle your settlement journey.</p>
+        </div>
+
+        <div class="flex w-full flex-col gap-4">
+          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 0" @click="toggle(0)">
+              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Who is SettelyUK designed for?</span>
+              <img src="imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 0 ? 'rotate-180' : ''">
+            </button>
+            <div x-show="active === 0" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">SettelyUK is built for refugees, migrants and newcomers settling in the UK who need clear, trustworthy guidance on everyday life.</div>
+          </div>
+          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 1" @click="toggle(1)">
+              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Which languages are currently supported?</span>
+              <img src="imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 1 ? 'rotate-180' : ''">
+            </button>
+            <div x-show="active === 1" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">The app offers guidance in English and Arabic, with more native languages being added over time.</div>
+          </div>
+          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 2" @click="toggle(2)">
+              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Is SettelyUK an official UK Government application?</span>
+              <img src="imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 2 ? 'rotate-180' : ''">
+            </button>
+            <div x-show="active === 2" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">No. SettelyUK is an independent support platform and is not affiliated with or endorsed by the UK Government.</div>
+          </div>
+          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 3" @click="toggle(3)">
+              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Can I use the app without sharing my real-time location?</span>
+              <img src="imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 3 ? 'rotate-180' : ''">
+            </button>
+            <div x-show="active === 3" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">Yes. You can choose your area manually, so you never have to share your real-time location to get local guidance.</div>
+          </div>
+          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 4" @click="toggle(4)">
+              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">What settlement guides are included in the free version?</span>
+              <img src="imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 4 ? 'rotate-180' : ''">
+            </button>
+            <div x-show="active === 4" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">All core settlement guides — including NHS, banking and tenancy — are free for everyone.</div>
+          </div>
+          <div class="rounded-2xl bg-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <button type="button" class="flex w-full items-center justify-between gap-4 p-6 text-left" :aria-expanded="active === 5" @click="toggle(5)">
+              <span class="text-[16px] font-semibold leading-6 text-navy sm:text-[18px]">Is SettelyUK completely free to use?</span>
+              <img src="imgs/icons/faq/chevron-down.svg" alt="" class="h-[7.4px] w-3 shrink-0 transition-transform" :class="active === 5 ? 'rotate-180' : ''">
+            </button>
+            <div x-show="active === 5" x-cloak class="px-6 pb-6 text-[15px] font-medium leading-6 text-[#434751]">The core app is free for individuals. Optional Pro and Family plans unlock extra tools for those who want them.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="flex flex-col items-center justify-center overflow-x-clip bg-mist px-4 py-16 md:px-10 lg:p-[100px]">
+      <div class="relative flex w-full max-w-[1229px] items-center justify-center gap-12 rounded-[40px] bg-primary-500 p-6 sm:p-10 lg:p-20">
+        <div class="pointer-events-none absolute inset-0 flex flex-col justify-end overflow-hidden rounded-[40px] opacity-10">
+          <div class="relative h-[274px] w-full overflow-clip">
+            <div class="absolute inset-[45.77%_0.89%_0.58%_0]">
+              <img src="imgs/cta/wave.svg" alt="" class="absolute inset-[0_-1.14%_-2.67%_0] block size-auto max-w-none">
+            </div>
+          </div>
+        </div>
+
+        <div class="relative flex min-w-px flex-1 flex-col items-start gap-6">
+          <h2 class="w-full text-[32px] font-bold leading-[1.1] text-white sm:text-[40px] lg:text-[48px] lg:leading-[48px]">
+            Start your next<br class="hidden sm:block">
+            chapter with a little<br class="hidden sm:block">
+            more certainty.
+          </h2>
+          <p class="max-w-[512px] pb-2 text-[16px] font-normal leading-7 text-white/80 lg:text-[18px]">Download SettaUK today and take the complexity out of settling in. Free for individuals.</p>
+          <a href="#" class="flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-[16px] font-bold leading-6 text-primary-500 opacity-90 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]">
+            Get Free App
+            <img src="imgs/icons/cta/arrow-right.svg" alt="" class="size-4">
+          </a>
+
+          <!-- Phones stage: absolute on very wide screens, stacked & scaled below -->
+          <div class="relative mx-auto h-[250px] w-full overflow-hidden sm:h-[336px] md:h-[468px] lg:h-[624px] min-[1440px]:absolute min-[1440px]:left-[488px] min-[1440px]:top-[-184.58px] min-[1440px]:mx-0 min-[1440px]:w-[832px] min-[1440px]:overflow-clip">
+            <div class="absolute left-1/2 top-0 h-[624px] w-[832px] origin-top -translate-x-1/2 scale-[0.4] sm:scale-[0.54] md:scale-75 lg:scale-100">
+              <!-- right phone: login -->
+              <div class="absolute left-[calc(50%+114.36px)] top-[calc(50%-0.28px)] flex h-[542.312px] w-[334.8px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                <div class="relative h-[506.48px] w-[250.659px] rotate-[10deg]">
+                  <div class="absolute left-[calc(50%-0.06px)] top-[calc(50%-0.26px)] h-[485.677px] w-[224.297px] -translate-x-1/2 -translate-y-1/2 overflow-clip rounded-[16.64px]">
+                    <img src="imgs/cta/screen-login.png" alt="" class="absolute left-1/2 top-1/2 h-[484.385px] w-[223.7px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover">
+                  </div>
+                  <img src="imgs/cta/iphone-frame.png" alt="" class="pointer-events-none absolute inset-0 size-full max-w-none object-cover">
+                </div>
+              </div>
+              <!-- left phone: onboarding -->
+              <div class="absolute left-[calc(50%-127.15px)] top-[calc(50%-2.78px)] flex h-[536.436px] w-[318.708px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                <div class="relative h-[506.48px] w-[250.659px] -rotate-[8deg]">
+                  <div class="absolute left-[calc(50%-0.06px)] top-[calc(50%-0.26px)] h-[485.677px] w-[224.297px] -translate-x-1/2 -translate-y-1/2 overflow-clip rounded-[16.64px]">
+                    <img src="imgs/cta/screen-onboarding.png" alt="" class="absolute left-1/2 top-1/2 h-[484.385px] w-[223.7px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover">
+                  </div>
+                  <img src="imgs/cta/iphone-frame.png" alt="" class="pointer-events-none absolute inset-0 size-full max-w-none object-cover">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-primary-500 p-6 md:p-12">
+    <div class="mx-auto flex w-full max-w-[1344px] flex-col">
+      <div class="flex flex-col gap-10 lg:flex-row lg:gap-0">
+        <div class="flex shrink-0 flex-col items-start lg:w-[372px]">
+          <a href="#" class="flex items-center gap-[10px] pb-5">
+            <span class="relative block h-[35px] w-[30px] shrink-0 overflow-hidden">
+              <img src="imgs/brand/logo-sprite-white.png" alt="" class="absolute left-[-80.01%] top-[-93.94%] h-[286.36%] w-[265.28%] max-w-none">
+            </span>
+            <span class="text-[28px] font-bold text-white">SettaUK</span>
+          </a>
+          <p class="max-w-[384px] pb-8 pr-[60px] text-[16px] font-normal text-white/90 lg:max-w-none lg:whitespace-nowrap">Guidance. Support. Community. A brighter<br class="hidden lg:block"> tomorrow together in the United Kingdom.</p>
+          <a href="#" class="mb-8 flex items-center gap-2 rounded-lg bg-white px-7 py-3 text-[16px] font-bold text-primary-500 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+            Get the App
+            <img src="imgs/icons/footer/arrow-right.svg" alt="" class="size-3">
+          </a>
+        </div>
+
+        <div class="grid min-w-px flex-1 grid-cols-2 gap-8 sm:grid-cols-3 lg:flex lg:min-h-[268px]">
+          <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
+            <h4 class="text-[16px] font-bold text-white">PRODUCT</h4>
+            <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#guides">Guides</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
+            <h4 class="text-[16px] font-bold text-white">COMPANY</h4>
+            <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Our Mission</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
+            <h4 class="text-[16px] font-bold text-white">LEGAL</h4>
+            <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">Accessibility</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-2 lg:min-w-px lg:flex-1">
+            <h4 class="text-[16px] font-bold text-white">SUPPORT</h4>
+            <ul class="flex flex-col gap-3 pt-2 text-[14px] font-normal text-[#f5f5f5]">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Resource Hub</a></li>
+              <li><a href="#">Safety &amp; Privacy</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-2 lg:flex-none">
+            <h4 class="text-[16px] font-bold text-white">CONNECT</h4>
+            <p class="pt-2 text-[14px] font-normal text-[#f5f5f5]">Join our growing<br>community across<br>social media.</p>
+            <div class="flex items-center gap-2 pt-2">
+              <a href="#" aria-label="X" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="imgs/icons/footer/x.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="LinkedIn" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="imgs/icons/footer/linkedin.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="Instagram" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="imgs/icons/footer/instagram.svg" alt="" class="size-6"></a>
+              <a href="#" aria-label="Facebook" class="flex size-10 items-center justify-center rounded-full bg-white/5"><img src="imgs/icons/footer/facebook.svg" alt="" class="size-6"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 border-t border-white/20 pt-[25px] text-[12px] font-medium leading-4 text-white/80 md:flex-row md:items-center md:justify-between">
+        <p>SetteaUK is an independent support platform and is not affiliated with or endorsed by the UK Government.</p>
+        <p class="md:text-right">© 2025 SettaUK Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
