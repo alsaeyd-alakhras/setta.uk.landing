@@ -1,4 +1,18 @@
 document.addEventListener('alpine:init', () => {
+  Alpine.store('lang', {
+    langs: SettaI18n.langs,
+    code: SettaI18n.current().code,
+    open: false,
+    get current() {
+      return this.langs.find((l) => l.code === this.code);
+    },
+    async set(code) {
+      this.open = false;
+      const lang = await SettaI18n.set(code);
+      this.code = lang.code;
+    },
+  });
+
   Alpine.data('siteHeader', () => ({
     open: false,
     scrolled: false,

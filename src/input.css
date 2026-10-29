@@ -14,6 +14,42 @@
   src: url('../fonts/plus-jakarta-sans-latin.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/tajawal-arabic-400.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/tajawal-arabic-500.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/tajawal-arabic-700.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/tajawal-arabic-800.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,6 +65,28 @@
 
   [x-cloak] {
     display: none !important;
+  }
+
+  /* Arabic uses Tajawal; Latin words and digits inside Arabic text keep Quicksand */
+  :root {
+    --font-arabic: 'Tajawal', 'Quicksand', sans-serif;
+  }
+
+  html[dir='rtl'] body,
+  html[dir='rtl'] body * {
+    font-family: var(--font-arabic);
+    letter-spacing: 0;
+  }
+
+  /* Arabic glyphs are taller: give big headings room so nothing overlaps or gets clipped */
+  html[dir='rtl'] h1,
+  html[dir='rtl'] h2 {
+    line-height: 1.4;
+  }
+
+  /* Hide the page for a moment while a saved non-English language loads */
+  html[data-i18n-pending] body {
+    opacity: 0;
   }
 }
 
